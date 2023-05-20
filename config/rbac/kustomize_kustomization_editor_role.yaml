@@ -1,0 +1,31 @@
+# permissions for end users to edit kustomizations.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: kustomization-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: flux-api-conversionwebhook
+    app.kubernetes.io/part-of: flux-api-conversionwebhook
+    app.kubernetes.io/managed-by: kustomize
+  name: kustomization-editor-role
+rules:
+- apiGroups:
+  - kustomize.toolkit.fluxcd.io
+  resources:
+  - kustomizations
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - kustomize.toolkit.fluxcd.io
+  resources:
+  - kustomizations/status
+  verbs:
+  - get

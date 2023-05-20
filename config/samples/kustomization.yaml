@@ -4,4 +4,6 @@ resources:
 - source_v1_gitrepository.yaml
 - notification_v1beta2_receiver.yaml
 - notification_v1_receiver.yaml
+- kustomize_v1beta2_kustomization.yaml
+- kustomize_v1_kustomization.yaml
 #+kubebuilder:scaffold:manifestskustomizesamples
