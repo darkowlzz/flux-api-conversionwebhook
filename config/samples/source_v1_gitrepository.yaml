@@ -1,0 +1,12 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  labels:
+    app.kubernetes.io/name: gitrepository
+    app.kubernetes.io/instance: gitrepository-sample
+    app.kubernetes.io/part-of: flux-api-conversionwebhook
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: flux-api-conversionwebhook
+  name: gitrepository-sample
+spec:
+  # TODO(user): Add fields here
