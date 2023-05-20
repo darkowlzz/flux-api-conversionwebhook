@@ -15,7 +15,7 @@ resources:
   domain: toolkit.fluxcd.io
   group: source
   kind: GitRepository
-  path: github.com/darkowlzz/flux-api-conversionwebhook/apis/source/v1beta2
+  path: github.com/darkowlzz/flux-api-conversionwebhook/api/source/v1beta2
   version: v1beta2
   webhooks:
     conversion: true
@@ -26,7 +26,7 @@ resources:
   domain: toolkit.fluxcd.io
   group: source
   kind: GitRepository
-  path: github.com/darkowlzz/flux-api-conversionwebhook/apis/source/v1
+  path: github.com/darkowlzz/flux-api-conversionwebhook/api/source/v1
   version: v1
   webhooks:
     conversion: true

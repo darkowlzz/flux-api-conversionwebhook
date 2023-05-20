@@ -22,7 +22,7 @@ limitations under the License.
 package v1beta2
 
 import (
-	sourcev1 "github.com/darkowlzz/flux-api-conversionwebhook/apis/source/v1"
+	sourcev1 "github.com/darkowlzz/flux-api-conversionwebhook/api/source/v1"
 	"github.com/fluxcd/pkg/apis/acl"
 	"github.com/fluxcd/pkg/apis/meta"
 	"k8s.io/apimachinery/pkg/apis/meta/v1"

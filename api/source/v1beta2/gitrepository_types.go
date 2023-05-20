@@ -24,7 +24,7 @@ import (
 	"github.com/fluxcd/pkg/apis/acl"
 	"github.com/fluxcd/pkg/apis/meta"
 
-	apiv1 "github.com/darkowlzz/flux-api-conversionwebhook/apis/source/v1"
+	apiv1 "github.com/darkowlzz/flux-api-conversionwebhook/api/source/v1"
 )
 
 const (

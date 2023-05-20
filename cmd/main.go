@@ -31,8 +31,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	sourcev1 "github.com/darkowlzz/flux-api-conversionwebhook/apis/source/v1"
-	sourcev1beta2 "github.com/darkowlzz/flux-api-conversionwebhook/apis/source/v1beta2"
+	sourcev1 "github.com/darkowlzz/flux-api-conversionwebhook/api/source/v1"
+	sourcev1beta2 "github.com/darkowlzz/flux-api-conversionwebhook/api/source/v1beta2"
 	//+kubebuilder:scaffold:imports
 )
 

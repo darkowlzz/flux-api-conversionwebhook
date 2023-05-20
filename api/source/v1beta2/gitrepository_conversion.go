@@ -19,7 +19,7 @@ package v1beta2
 import (
 	"sigs.k8s.io/controller-runtime/pkg/conversion"
 
-	sourcev1 "github.com/darkowlzz/flux-api-conversionwebhook/apis/source/v1"
+	sourcev1 "github.com/darkowlzz/flux-api-conversionwebhook/api/source/v1"
 )
 
 func (src *GitRepository) ConvertTo(dstRaw conversion.Hub) error {
