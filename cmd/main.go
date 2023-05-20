@@ -102,6 +102,14 @@ func main() {
 		setupLog.Error(err, "unable to create webhook", "webhook", "GitRepository")
 		os.Exit(1)
 	}
+	if err = (&notificationv1.Receiver{}).SetupWebhookWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create webhook", "webhook", "Receiver")
+		os.Exit(1)
+	}
+	if err = (&notificationv1beta2.Receiver{}).SetupWebhookWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create webhook", "webhook", "Receiver")
+		os.Exit(1)
+	}
 	//+kubebuilder:scaffold:builder
 
 	if err := mgr.AddHealthzCheck("healthz", healthz.Ping); err != nil {

@@ -39,6 +39,9 @@ resources:
   kind: Receiver
   path: github.com/darkowlzz/flux-api-conversionwebhook/api/notification/v1beta2
   version: v1beta2
+  webhooks:
+    conversion: true
+    webhookVersion: v1
 - api:
     crdVersion: v1
     namespaced: true
@@ -47,4 +50,7 @@ resources:
   kind: Receiver
   path: github.com/darkowlzz/flux-api-conversionwebhook/api/notification/v1
   version: v1
+  webhooks:
+    conversion: true
+    webhookVersion: v1
 version: "3"
