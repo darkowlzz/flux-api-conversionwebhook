@@ -22,7 +22,7 @@ limitations under the License.
 package v1beta2
 
 import (
-	apiv1 "github.com/darkowlzz/flux-api-conversionwebhook/api/v1"
+	sourcev1 "github.com/darkowlzz/flux-api-conversionwebhook/apis/source/v1"
 	"github.com/fluxcd/pkg/apis/acl"
 	"github.com/fluxcd/pkg/apis/meta"
 	"k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -182,16 +182,16 @@ func (in *GitRepositoryStatus) DeepCopyInto(out *GitRepositoryStatus) {
 	}
 	if in.Artifact != nil {
 		in, out := &in.Artifact, &out.Artifact
-		*out = new(apiv1.Artifact)
+		*out = new(sourcev1.Artifact)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.IncludedArtifacts != nil {
 		in, out := &in.IncludedArtifacts, &out.IncludedArtifacts
-		*out = make([]*apiv1.Artifact, len(*in))
+		*out = make([]*sourcev1.Artifact, len(*in))
 		for i := range *in {
 			if (*in)[i] != nil {
 				in, out := &(*in)[i], &(*out)[i]
-				*out = new(apiv1.Artifact)
+				*out = new(sourcev1.Artifact)
 				(*in).DeepCopyInto(*out)
 			}
 		}
