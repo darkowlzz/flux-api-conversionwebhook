@@ -16,6 +16,9 @@ resources:
   kind: GitRepository
   path: github.com/darkowlzz/flux-api-conversionwebhook/api/v1beta2
   version: v1beta2
+  webhooks:
+    conversion: true
+    webhookVersion: v1
 - api:
     crdVersion: v1
     namespaced: true
@@ -24,4 +27,7 @@ resources:
   kind: GitRepository
   path: github.com/darkowlzz/flux-api-conversionwebhook/api/v1
   version: v1
+  webhooks:
+    conversion: true
+    webhookVersion: v1
 version: "3"
