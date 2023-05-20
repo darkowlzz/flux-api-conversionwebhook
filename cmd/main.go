@@ -31,6 +31,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
+	notificationv1 "github.com/darkowlzz/flux-api-conversionwebhook/api/notification/v1"
+	notificationv1beta2 "github.com/darkowlzz/flux-api-conversionwebhook/api/notification/v1beta2"
 	sourcev1 "github.com/darkowlzz/flux-api-conversionwebhook/api/source/v1"
 	sourcev1beta2 "github.com/darkowlzz/flux-api-conversionwebhook/api/source/v1beta2"
 	//+kubebuilder:scaffold:imports
@@ -46,6 +48,8 @@ func init() {
 
 	utilruntime.Must(sourcev1beta2.AddToScheme(scheme))
 	utilruntime.Must(sourcev1.AddToScheme(scheme))
+	utilruntime.Must(notificationv1beta2.AddToScheme(scheme))
+	utilruntime.Must(notificationv1.AddToScheme(scheme))
 	//+kubebuilder:scaffold:scheme
 }
 

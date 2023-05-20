@@ -2,4 +2,6 @@
 resources:
 - source_v1beta2_gitrepository.yaml
 - source_v1_gitrepository.yaml
+- notification_v1beta2_receiver.yaml
+- notification_v1_receiver.yaml
 #+kubebuilder:scaffold:manifestskustomizesamples
