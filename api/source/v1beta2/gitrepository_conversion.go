@@ -17,6 +17,9 @@ limitations under the License.
 package v1beta2
 
 import (
+	"time"
+
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"sigs.k8s.io/controller-runtime/pkg/conversion"
 
 	sourcev1 "github.com/darkowlzz/flux-api-conversionwebhook/api/source/v1"
@@ -35,6 +38,10 @@ func (src *GitRepository) ConvertTo(dstRaw conversion.Hub) error {
 	dst.Spec.SecretRef = src.Spec.SecretRef
 	dst.Spec.Interval = src.Spec.Interval
 	dst.Spec.Timeout = src.Spec.Timeout
+	// Timeout has a default value of 60s when unset.
+	if dst.Spec.Timeout == nil {
+		dst.Spec.Timeout = &metav1.Duration{Duration: 60 * time.Second}
+	}
 	dst.Spec.Reference = (*sourcev1.GitRepositoryRef)(src.Spec.Reference)
 	dst.Spec.Verification = (*sourcev1.GitRepositoryVerification)(src.Spec.Verification)
 	dst.Spec.Ignore = src.Spec.Ignore
@@ -51,6 +58,10 @@ func (src *GitRepository) ConvertTo(dstRaw conversion.Hub) error {
 
 	// Status
 	dst.Status.ObservedGeneration = src.Status.ObservedGeneration
+	// ObservedGeneration has a default value of -1 when it's unset.
+	if dst.Status.ObservedGeneration == 0 {
+		dst.Status.ObservedGeneration = -1
+	}
 	dst.Status.Conditions = src.Status.Conditions
 	dst.Status.Artifact = src.Status.Artifact
 	dst.Status.IncludedArtifacts = src.Status.IncludedArtifacts
@@ -82,6 +93,10 @@ func (dst *GitRepository) ConvertFrom(srcRaw conversion.Hub) error {
 	dst.Spec.SecretRef = src.Spec.SecretRef
 	dst.Spec.Interval = src.Spec.Interval
 	dst.Spec.Timeout = src.Spec.Timeout
+	// Timeout has a default value of 60s when unset.
+	if dst.Spec.Timeout == nil {
+		dst.Spec.Timeout = &metav1.Duration{Duration: 60 * time.Second}
+	}
 	dst.Spec.Reference = (*GitRepositoryRef)(src.Spec.Reference)
 	dst.Spec.Verification = (*GitRepositoryVerification)(src.Spec.Verification)
 	dst.Spec.Ignore = src.Spec.Ignore
@@ -98,6 +113,10 @@ func (dst *GitRepository) ConvertFrom(srcRaw conversion.Hub) error {
 
 	// Status
 	dst.Status.ObservedGeneration = src.Status.ObservedGeneration
+	// ObservedGeneration has a default value of -1 when it's unset.
+	if dst.Status.ObservedGeneration == 0 {
+		dst.Status.ObservedGeneration = -1
+	}
 	dst.Status.Conditions = src.Status.Conditions
 	dst.Status.Artifact = src.Status.Artifact
 	dst.Status.IncludedArtifacts = src.Status.IncludedArtifacts

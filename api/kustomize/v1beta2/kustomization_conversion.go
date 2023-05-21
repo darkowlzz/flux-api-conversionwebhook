@@ -67,6 +67,10 @@ func (src *Kustomization) ConvertTo(dstRaw conversion.Hub) error {
 	// Status
 	dst.Status.ReconcileRequestStatus = src.Status.ReconcileRequestStatus
 	dst.Status.ObservedGeneration = src.Status.ObservedGeneration
+	// ObservedGeneration has a default value of -1 when it's unset.
+	if dst.Status.ObservedGeneration == 0 {
+		dst.Status.ObservedGeneration = -1
+	}
 	dst.Status.Conditions = src.Status.Conditions
 	dst.Status.LastAppliedRevision = src.Status.LastAppliedRevision
 	dst.Status.LastAttemptedRevision = src.Status.LastAttemptedRevision
@@ -127,6 +131,10 @@ func (dst *Kustomization) ConvertFrom(srcRaw conversion.Hub) error {
 	// Status
 	dst.Status.ReconcileRequestStatus = src.Status.ReconcileRequestStatus
 	dst.Status.ObservedGeneration = src.Status.ObservedGeneration
+	// ObservedGeneration has a default value of -1 when it's unset.
+	if dst.Status.ObservedGeneration == 0 {
+		dst.Status.ObservedGeneration = -1
+	}
 	dst.Status.Conditions = src.Status.Conditions
 	dst.Status.LastAppliedRevision = src.Status.LastAppliedRevision
 	dst.Status.LastAttemptedRevision = src.Status.LastAttemptedRevision

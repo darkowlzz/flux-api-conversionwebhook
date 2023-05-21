@@ -17,6 +17,7 @@ limitations under the License.
 package v1beta2
 
 import (
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"sigs.k8s.io/controller-runtime/pkg/conversion"
 
 	notificationv1 "github.com/darkowlzz/flux-api-conversionwebhook/api/notification/v1"
@@ -33,6 +34,11 @@ func (src *Receiver) ConvertTo(dstRaw conversion.Hub) error {
 	// Spec
 	dst.Spec.Type = src.Spec.Type
 	dst.Spec.Interval = src.Spec.Interval
+	// Interval has a default value in v1. Use the default when nil.
+	if src.Spec.Interval == nil {
+		dst.Spec.Interval = &metav1.Duration{Duration: dst.GetInterval()}
+	}
+	dst.Spec.Interval = src.Spec.Interval
 	dst.Spec.Events = src.Spec.Events
 	dst.Spec.Resources = src.Spec.Resources
 	dst.Spec.SecretRef = src.Spec.SecretRef
@@ -43,6 +49,10 @@ func (src *Receiver) ConvertTo(dstRaw conversion.Hub) error {
 	dst.Status.Conditions = src.Status.Conditions
 	dst.Status.WebhookPath = src.Status.WebhookPath
 	dst.Status.ObservedGeneration = src.Status.ObservedGeneration
+	// ObservedGeneration has a default value of -1 when it's unset.
+	if dst.Status.ObservedGeneration == 0 {
+		dst.Status.ObservedGeneration = -1
+	}
 
 	return nil
 }
@@ -68,6 +78,10 @@ func (dst *Receiver) ConvertFrom(srcRaw conversion.Hub) error {
 	dst.Status.Conditions = src.Status.Conditions
 	dst.Status.WebhookPath = src.Status.WebhookPath
 	dst.Status.ObservedGeneration = src.Status.ObservedGeneration
+	// ObservedGeneration has a default value of -1 when it's unset.
+	if dst.Status.ObservedGeneration == 0 {
+		dst.Status.ObservedGeneration = -1
+	}
 
 	return nil
 }
